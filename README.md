@@ -13,3 +13,8 @@
 3. Start nextcloud with docker-compose up -d
 
 #### Note: If you want to update docker base images you should edit the docker-compose.yml
+
+#### Important settings:
+'overwriteprotocol' => 'https'
+'lost_password_link' => 'disabled'
+'auth.webauthn.enabled' => false
