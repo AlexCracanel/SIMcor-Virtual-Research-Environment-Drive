@@ -16,5 +16,7 @@
 
 #### Important settings:
 'overwriteprotocol' => 'https'
+
 'lost_password_link' => 'disabled'
+
 'auth.webauthn.enabled' => false
