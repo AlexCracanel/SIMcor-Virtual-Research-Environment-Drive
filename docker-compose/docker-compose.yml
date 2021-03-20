@@ -10,7 +10,7 @@ services:
       - db.env
 
   app:
-    image: nextcloud:19.0.9-fpm-alpine
+    image: nextcloud:21.0.0-fpm-alpine
     restart: always
     volumes:
       - nextcloud:/var/www/html
