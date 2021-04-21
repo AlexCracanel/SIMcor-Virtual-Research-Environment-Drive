@@ -20,17 +20,36 @@ services:
       - db.env
     depends_on:
       - db
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
   web:
     build: ./web
     restart: always
     ports:
-      - 80:80
+      - 8081:80
     volumes:
       - nextcloud:/var/www/html:ro
     depends_on:
       - app
 
+  onlyoffice:
+    image: alehoho/oo-ce-docker-license:6.2.0.123
+    restart: always
+    volumes:
+      - /var/www/onlyoffice:/var/www/onlyoffice
+      - /var/lib/onlyoffice:/var/lib/onlyoffice
+      - onlyoffice:/etc/onlyoffice/documentserver
+    environment:
+      - TZ=Europe/Bucharest
+    ports:
+      - 8080:8080
+      - 3000:3000
+      - 8000:8000
+    depends_on:
+      - web
+
 volumes:
   db:
   nextcloud:
+  onlyoffice:
