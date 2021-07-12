@@ -1,0 +1,19 @@
+# Virtual Host configuration for simcorof.unitbv.ro
+#
+
+include /etc/nginx/includes/http-common.conf;
+
+server {
+       listen 80;
+       listen [::]:80;
+
+       server_name simcorof.unitbv.ro;
+	   
+       #access_log /var/log/nginx/simcorof-access.log;
+       error_log /var/log/nginx/simcorof-error.log;
+       
+       #add_header Content-Security-Policy "upgrade-insecure-requests;";
+       
+       include /etc/nginx/includes/ds-*.conf;
+}
+

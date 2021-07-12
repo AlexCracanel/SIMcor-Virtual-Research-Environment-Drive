@@ -1,0 +1,21 @@
+# Virtual Host configuration for simcor.unitbv.ro
+#
+server {
+       listen 80;
+       listen [::]:80;
+
+       server_name simcor.unitbv.ro;
+
+       #access_log /var/log/nginx/simcor-access.log;
+       error_log /var/log/nginx/simcor-error.log;
+              
+       location / {
+               proxy_set_header Host $host;
+               proxy_set_header X-Real-IP $remote_addr;
+               client_max_body_size    10g;
+               proxy_pass      http://localhost:8081;
+               
+               #add_header Content-Security-Policy "upgrade-insecure-requests;";
+       }
+}
+
